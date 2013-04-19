@@ -2223,6 +2223,11 @@ var main = (function(){
         addEventListener('click', _onToolsLeftScroll);
     document.querySelector('#tools-scroll-right').
         addEventListener('click', _onToolsRightScroll);
+
+    document.querySelector('#tools-scroll-left').
+        addEventListener('touchstart', _onToolsLeftScroll);
+    document.querySelector('#tools-scroll-right').
+        addEventListener('touchstart', _onToolsRightScroll);
   }
 
   function _inspectSystem() {
