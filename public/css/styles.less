@@ -195,7 +195,7 @@ footer {
   height: @toolsHeight;
   bottom: 0;
   padding-right: 10px;
-  padding-left: 450px;
+  padding-left: 460px;
 
   background: url(../images/toolbox-bk.png);
 
@@ -213,11 +213,40 @@ footer {
 
   height: @toolsHeight;
 
-  overflow-x: scroll;
-  overflow-y: hidden;
-
   position: relative;
 }
+#tools-inside {
+  position: absolute;
+  left: 50px;
+  right: 50px;
+  top: 0;
+  bottom: -50px;
+
+  overflow-x: scroll;
+  overflow-y: hidden;
+}
+
+#tools-scroll-left,
+#tools-scroll-right {
+  position: absolute;
+  bottom: 20px;
+  top: 23px;
+  width: 40px;
+
+  &.invisible {
+    opacity: 0;
+    pointer-events: none;
+  }
+}
+
+#tools-scroll-left {
+  left: 0;
+}
+
+#tools-scroll-right {
+  right: 0;
+}
+
 #trashcan {
   position: absolute;
   left: 40px;

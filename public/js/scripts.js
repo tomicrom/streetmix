@@ -1962,7 +1962,7 @@ var main = (function(){
 
       el.classList.add('tool');
 
-      document.querySelector('#tools').appendChild(el);
+      document.querySelector('#tools-inside').appendChild(el);
     }
   }
 
@@ -2007,6 +2007,44 @@ var main = (function(){
 
     document.querySelector('#editable-street-section').style.width = 
       (data.streetWidth * TILE_SIZE) + 'px';
+
+    _resizeScrollTools();
+  }
+
+  function _resizeScrollTools() {
+    var el = document.querySelector('#tools-inside');
+
+    var leftVisible = true;
+    var rightVisible = true;
+
+    if (el.offsetWidth >= el.scrollWidth) {
+      leftVisible = false;
+      rightVisible = false;
+    } else {
+      if (el.scrollLeft <= 0) {
+        leftVisible = false;
+      }
+      if (el.scrollLeft >= el.scrollWidth - el.offsetWidth) {
+        rightVisible = false;
+      }
+    }
+
+    document.querySelector('#tools-scroll-left').disabled = !leftVisible;
+    document.querySelector('#tools-scroll-right').disabled = !rightVisible;
+  }
+
+  function _onToolsLeftScroll() {
+    // TODO make const
+    var w = .75 * document.querySelector('#tools-inside').offsetWidth;
+
+    document.querySelector('#tools-inside').scrollLeft -= w;
+  }
+
+  function _onToolsRightScroll() {
+    // TODO make const
+    var w = .75 * document.querySelector('#tools-inside').offsetWidth;
+
+    document.querySelector('#tools-inside').scrollLeft += w;
   }
 
   function _getDefaultSegments() {
@@ -2157,26 +2195,34 @@ var main = (function(){
   }
 
   function _addEventListeners() {
-    document.querySelector('#undo').addEventListener('click', _undo, false);
-    document.querySelector('#redo').addEventListener('click', _redo, false);
+    document.querySelector('#undo').addEventListener('click', _undo);
+    document.querySelector('#redo').addEventListener('click', _redo);
 
     document.querySelector('#street-width-custom').
-        addEventListener('change', _onStreetWidthChange, false);
+        addEventListener('change', _onStreetWidthChange);
     document.querySelector('#street-width-no-custom').
-        addEventListener('change', _onStreetWidthChange, false);
+        addEventListener('change', _onStreetWidthChange);
 
-    window.addEventListener('resize', _onResize, false);
+    window.addEventListener('resize', _onResize);
 
     if (!system.touch) {
-      window.addEventListener('mousedown', _onBodyMouseDown, false);
-      window.addEventListener('mousemove', _onBodyMouseMove, false);
-      window.addEventListener('mouseup', _onBodyMouseUp, false); 
+      window.addEventListener('mousedown', _onBodyMouseDown);
+      window.addEventListener('mousemove', _onBodyMouseMove);
+      window.addEventListener('mouseup', _onBodyMouseUp); 
     } else {
-      window.addEventListener('touchstart', _onBodyMouseDown, false);
-      window.addEventListener('touchmove', _onBodyMouseMove, false);
-      window.addEventListener('touchend', _onBodyMouseUp, false); 
+      window.addEventListener('touchstart', _onBodyMouseDown);
+      window.addEventListener('touchmove', _onBodyMouseMove);
+      window.addEventListener('touchend', _onBodyMouseUp); 
     }
-    window.addEventListener('keydown', _onBodyKeyDown, false);       
+    window.addEventListener('keydown', _onBodyKeyDown);       
+
+    document.querySelector('#tools-inside').
+        addEventListener('scroll', _resizeScrollTools);
+
+    document.querySelector('#tools-scroll-left').
+        addEventListener('click', _onToolsLeftScroll);
+    document.querySelector('#tools-scroll-right').
+        addEventListener('click', _onToolsRightScroll);
   }
 
   function _inspectSystem() {
