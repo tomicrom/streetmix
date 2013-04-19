@@ -12,9 +12,7 @@ var main = (function(){
 "use strict";
   var main = {};
 
-  var TILESET_IMAGE_VERSION = 7;
-  var TILESET_WIDTH = 2622;
-  var TILESET_HEIGHT = 384;
+  var TILESET_IMAGE_VERSION = 10;
   var TILESET_POINT_PER_PIXEL = 2.0;
   var TILE_SIZE = 12; // pixels
 
@@ -159,7 +157,7 @@ var main = (function(){
     },
     "bike-lane-inbound": {
       name: 'Bike lane',
-      subname: 'Inbound',
+      fullName: 'Inbound bike lane',
       owner: SEGMENT_OWNER_BIKE,
       defaultWidth: 6,
       graphics: {
@@ -169,7 +167,7 @@ var main = (function(){
     },
     "bike-lane-outbound": {
       name: 'Bike lane',
-      subname: 'Outbound',
+      fullName: 'Outbound bike lane',
       owner: SEGMENT_OWNER_BIKE,
       defaultWidth: 6,
       graphics: {
@@ -177,56 +175,9 @@ var main = (function(){
         repeat: { x: 90, y: 0, width: 1, height: 15 }
       }
     },
-    "parking-lane": {
-      name: 'Parking lane',
-      owner: SEGMENT_OWNER_CAR,
-      defaultWidth: 8,
-      minWidth: 8,
-      maxWidth: 10,
-      graphics: {
-        center: { x: 50, y: 0, width: 8, height: 15 },
-        repeat: { x: 26, y: 0, width: 1, height: 15 },
-        left: { x: 46, width: 3, height: 15 }
-      }
-    },
-    "drive-lane-inbound": {
-      name: 'Drive lane',
-      subname: 'Inbound',
-      owner: SEGMENT_OWNER_CAR,
-      defaultWidth: 10,
-      minWidth: 9,
-      maxWidth: 12,
-      graphics: {
-        center: { x: 28, y: 0, width: 8, height: 15 },
-        repeat: { x: 26, y: 0, width: 1, height: 15 }
-      }
-    },
-    "drive-lane-outbound": {
-      name: 'Drive lane',
-      subname: 'Outbound',
-      owner: SEGMENT_OWNER_CAR,
-      defaultWidth: 10,
-      minWidth: 9,
-      maxWidth: 12,
-      graphics: {
-        center: { x: 37, y: 0, width: 8, height: 15 },
-        repeat: { x: 26, y: 0, width: 1, height: 15 }
-      }
-    },
-    "turn-lane": {
-      name: 'Turn lane',
-      owner: SEGMENT_OWNER_CAR,
-      defaultWidth: 10,
-      minWidth: 9,
-      maxWidth: 12,
-      graphics: {
-        center: { x: 81, y: 0, width: 8, height: 15 },
-        repeat: { x: 26, y: 0, width: 1, height: 15 }
-      }
-    },
     "bus-lane-inbound": {
       name: 'Bus lane',
-      subname: 'Inbound',
+      fullName: 'Inbound bus lane',
       owner: SEGMENT_OWNER_PUBLIC_TRANSIT,
       defaultWidth: 10,
       minWidth: 9,
@@ -238,13 +189,137 @@ var main = (function(){
     },
     "bus-lane-outbound": {
       name: 'Bus lane',
-      subname: 'Outbound',
+      fullName: 'Outbound bus lane',
       owner: SEGMENT_OWNER_PUBLIC_TRANSIT,
       defaultWidth: 10,
       minWidth: 9,
       maxWidth: 12,
       graphics: {
         center: { x: 70, y: 0, width: 10, height: 15 },
+        repeat: { x: 26, y: 0, width: 1, height: 15 }
+      }
+    },
+    "drive-lane-inbound": {
+      name: 'Drive lane',
+      fullName: 'Inbound drive lane',
+      owner: SEGMENT_OWNER_CAR,
+      defaultWidth: 10,
+      minWidth: 9,
+      maxWidth: 12,
+      graphics: {
+        center: { x: 28, y: 0, width: 8, height: 15 },
+        repeat: { x: 26, y: 0, width: 1, height: 15 }
+      }
+    },
+    "drive-lane-outbound": {
+      name: 'Drive lane',
+      fullName: 'Outbound drive lane',
+      owner: SEGMENT_OWNER_CAR,
+      defaultWidth: 10,
+      minWidth: 9,
+      maxWidth: 12,
+      graphics: {
+        center: { x: 37, y: 0, width: 8, height: 15 },
+        repeat: { x: 26, y: 0, width: 1, height: 15 }
+      }
+    },
+    "parking-lane-inbound-left": {
+      name: 'Parking lane',
+      fullName: 'Inbound parking lane on the left',
+      owner: SEGMENT_OWNER_CAR,
+      defaultWidth: 8,
+      minWidth: 8,
+      maxWidth: 10,
+      graphics: {
+        center: { x: 50, y: 0, width: 8, height: 15 },
+        repeat: { x: 26, y: 0, width: 1, height: 15 },
+        right: { x: 112, width: 2, height: 15 }
+      }
+    },
+    "parking-lane-inbound-right": {
+      name: 'Parking lane',
+      fullName: 'Inbound parking lane on the right',
+      owner: SEGMENT_OWNER_CAR,
+      defaultWidth: 8,
+      minWidth: 8,
+      maxWidth: 10,
+      graphics: {
+        center: { x: 50, y: 0, width: 8, height: 15 },
+        repeat: { x: 26, y: 0, width: 1, height: 15 },
+        left: { x: 46, width: 2, height: 15 }
+      }
+    },
+    "parking-lane-outbound-left": {
+      name: 'Parking lane',
+      fullName: 'Outbound parking lane on the left',
+      owner: SEGMENT_OWNER_CAR,
+      defaultWidth: 8,
+      minWidth: 8,
+      maxWidth: 10,
+      graphics: {
+        center: { x: 115, y: 0, width: 8, height: 15 },
+        repeat: { x: 26, y: 0, width: 1, height: 15 },
+        right: { x: 112, width: 2, height: 15 }
+      }
+    },
+    "parking-lane-outbound-right": {
+      name: 'Parking lane',
+      fullName: 'Outbound parking lane on the right',
+      owner: SEGMENT_OWNER_CAR,
+      defaultWidth: 8,
+      minWidth: 8,
+      maxWidth: 10,
+      graphics: {
+        center: { x: 115, y: 0, width: 8, height: 15 },
+        repeat: { x: 26, y: 0, width: 1, height: 15 },
+        left: { x: 46, width: 2, height: 15 }
+      }
+    },
+    "turn-lane-inbound-left": {
+      name: 'Turn lane',
+      fullName: 'Inbound left turn lane',
+      owner: SEGMENT_OWNER_CAR,
+      defaultWidth: 10,
+      minWidth: 9,
+      maxWidth: 12,
+      graphics: {
+        center: { x: 123, y: 0, width: 8, height: 15 },
+        repeat: { x: 26, y: 0, width: 1, height: 15 }
+      }
+    },
+    "turn-lane-inbound-right": {
+      name: 'Turn lane',
+      fullName: 'Inbound right turn lane',
+      owner: SEGMENT_OWNER_CAR,
+      defaultWidth: 10,
+      minWidth: 9,
+      maxWidth: 12,
+      graphics: {
+        center: { x: 81, y: 0, width: 8, height: 15 },
+        repeat: { x: 26, y: 0, width: 1, height: 15 }
+      }
+    },
+    "turn-lane-outbound-left": {
+      name: 'Turn lane',
+      fullName: 'Outbound left turn lane',
+      owner: SEGMENT_OWNER_CAR,
+      defaultWidth: 10,
+      minWidth: 9,
+      maxWidth: 12,
+      graphics: {
+        center: { x: 132, y: 0, width: 8, height: 15 },
+        repeat: { x: 26, y: 0, width: 1, height: 15 }
+      }
+    },
+    "turn-lane-outbound-right": {
+      name: 'Turn lane',
+      fullName: 'Outbound right turn lane',
+      owner: SEGMENT_OWNER_CAR,
+      defaultWidth: 10,
+      minWidth: 9,
+      maxWidth: 12,
+      graphics: {
+        center: { x: 141, y: 0, width: 8, height: 15 },
         repeat: { x: 26, y: 0, width: 1, height: 15 }
       }
     },
@@ -520,15 +595,15 @@ var main = (function(){
 
       var w = segmentInfo.graphics.right.width * TILE_SIZE;
 
-      var rightTargetX = maxWidth - w;
+      var rightTargetX = maxWidth - segmentInfo.graphics.right.width * TILE_SIZE * multiplier;
 
       if (isTool) {
-        rightTargetX -= segmentInfo.graphics.right.offsetX * TILE_SIZE * multiplier;
+        rightTargetX += (segmentInfo.graphics.right.offsetX || 0) * TILE_SIZE;
       }
 
       _drawSegmentImage(ctx,
-        rightPositionX, 0, w, realHeight, 
-        rightTargetX, 
+        rightPositionX, 0, w, realHeight,
+        rightTargetX,
         // TODO const
         (isTool ? 20 : 265) + top, 
         w * multiplier, realHeight * multiplier);
@@ -977,7 +1052,7 @@ var main = (function(){
       innerEl.classList.add('grid');
       el.appendChild(innerEl);
     } else {
-    	el.setAttribute('title', SEGMENT_INFO[type].name);
+    	el.setAttribute('title', SEGMENT_INFO[type].fullName || SEGMENT_INFO[type].name);
     }
 
     if (width) {
@@ -1860,7 +1935,7 @@ var main = (function(){
     for (var i in SEGMENT_INFO) {
       var segmentInfo = SEGMENT_INFO[i];
 
-      var width = segmentInfo.defaultWidth;
+      var width = segmentInfo.minWidth || segmentInfo.defaultWidth;
 
       if (segmentInfo.realWidth > segmentInfo.defaultWidth) {
         width = segmentInfo.realWidth;
