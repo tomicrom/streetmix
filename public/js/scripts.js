@@ -2100,17 +2100,13 @@ var main = (function(){
   function _onToolsLeftScroll() {
     // TODO make const
     var w = .75 * document.querySelector('#tools-inside').offsetWidth;
-
-    //document.querySelector('#tools-inside').scrollLeft -= w;
-
+    // TODO make const
     $('#tools-inside').animate({ scrollLeft : document.querySelector('#tools-inside').scrollLeft - w }, 250);
   }
 
   function _onToolsRightScroll() {
     // TODO make const
     var w = .75 * document.querySelector('#tools-inside').offsetWidth;
-
-    //document.querySelector('#tools-inside').scrollLeft += w;
     // TODO make const
     $('#tools-inside').animate({ scrollLeft : document.querySelector('#tools-inside').scrollLeft + w }, 250);    
   }
