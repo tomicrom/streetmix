@@ -128,6 +128,16 @@ var main = (function(){
         repeat: { x: 1, y: 5, width: 1, height: 15 }
       }
     },
+    "planting-strip": {
+      name: 'Planting strip',
+      group: 'sidewalk',
+      owner: SEGMENT_OWNER_NATURE,
+      defaultWidth: 4,
+      graphics: {
+        center: { width: 0, height: 15 },
+        repeat: { x: 8, y: 5, width: 4, height: 15 }
+      }
+    },
     "sidewalk-lamp-right": {
       name: 'Sidewalk w/ a lamp',
       group: 'sidewalk',
@@ -158,16 +168,6 @@ var main = (function(){
         center: { width: 0, height: 15 },
         repeat: { x: 1, y: 5, width: 1, height: 15 },
         left: { x: 107, y: 0, offsetX: -2, offsetY: -5, width: 4, height: 20 }
-      }
-    },
-    "planting-strip": {
-      name: 'Planting strip',
-      group: 'sidewalk',
-      owner: SEGMENT_OWNER_NATURE,
-      defaultWidth: 4,
-      graphics: {
-        center: { width: 0, height: 15 },
-        repeat: { x: 8, y: 5, width: 4, height: 15 }
       }
     },
     "bike-lane-inbound": {
@@ -733,6 +733,11 @@ var main = (function(){
         _widthEditInputChanged(el, true);
         _loseAnyFocus();
         el.value = el.segmentEl.getAttribute('width');
+
+        window.setTimeout(function() {
+          el.focus();
+          el.select();
+        }, 0);
         break;
       case KEY_ESC:
         el.value = el.oldValue;
