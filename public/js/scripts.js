@@ -41,7 +41,7 @@ var main = (function(){
   var DRAGGING_MOVE_HOLE_WIDTH = 40;
 
   var WIDTH_RESIZE_DELAY = 100;
-  var STATUS_MESSAGE_HIDE_DELAY = 5000;
+  var STATUS_MESSAGE_HIDE_DELAY = 15000;
   var WIDTH_EDIT_INPUT_DELAY = 200;
 
   var STREET_WIDTH_CUSTOM = -1;
@@ -109,227 +109,257 @@ var main = (function(){
   var SEGMENT_INFO = {
     'sidewalk': {
       name: 'Sidewalk',
+      group: 'sidewalk',
       owner: SEGMENT_OWNER_PEDESTRIAN,
       defaultWidth: 6,
       minWidth: 6,
       graphics: {
-        center: { x: 3, y: 0, width: 4, height: 15 },
-        repeat: { x: 1, y: 0, width: 1, height: 15 }
+        center: { x: 3, y: 5, width: 4, height: 15 },
+        repeat: { x: 1, y: 5, width: 1, height: 15 }
       }
     },
     "sidewalk-tree": {
       name: 'Sidewalk w/ a tree',
+      group: 'sidewalk',
       owner: SEGMENT_OWNER_NATURE,
       defaultWidth: 4,
       graphics: {
-        center: { x: 13, y: 0, width: 6, height: 15 },
-        repeat: { x: 1, y: 0, width: 1, height: 15 }
+        center: { x: 13, y: 5, width: 6, height: 15 },
+        repeat: { x: 1, y: 5, width: 1, height: 15 }
       }
     },
     "sidewalk-lamp-right": {
       name: 'Sidewalk w/ a lamp',
+      group: 'sidewalk',
       owner: SEGMENT_OWNER_PEDESTRIAN,
       defaultWidth: 4,
       graphics: {
         center: { width: 0, height: 15 },
-        repeat: { x: 1, y: 0, width: 1, height: 15 },
-        right: { x: 102, offsetX: -2, width: 4, height: 15 }
+        repeat: { x: 1, y: 5, width: 1, height: 15 },
+        right: { x: 102, y: 0, offsetX: -2, offsetY: -5, width: 4, height: 20 }
       }
     },
     "sidewalk-lamp-left": {
       name: 'Sidewalk w/ a lamp',
+      group: 'sidewalk',
       owner: SEGMENT_OWNER_PEDESTRIAN,
       defaultWidth: 4,
       graphics: {
         center: { width: 0, height: 15 },
-        repeat: { x: 1, y: 0, width: 1, height: 15 },
-        left: { x: 107, offsetX: -2, width: 4, height: 15 }
+        repeat: { x: 1, y: 5, width: 1, height: 15 },
+        left: { x: 107, y: 0, offsetX: -2, offsetY: -5, width: 4, height: 20 }
+      }
+    },
+    "sidewalk-lamp-both": {
+      name: 'Sidewalk w/ a lamp',
+      group: 'sidewalk',
+      owner: SEGMENT_OWNER_PEDESTRIAN,
+      defaultWidth: 6,
+      graphics: {
+        center: { x: 150, y: 0, offsetY: -5, width: 6, height: 20 },
+        repeat: { x: 1, y: 5, width: 1, height: 15 },
       }
     },
     "planting-strip": {
       name: 'Planting strip',
+      group: 'sidewalk',
       owner: SEGMENT_OWNER_NATURE,
       defaultWidth: 4,
       graphics: {
         center: { width: 0, height: 15 },
-        repeat: { x: 8, y: 0, width: 4, height: 15 }
+        repeat: { x: 8, y: 5, width: 4, height: 15 }
       }
     },
     "bike-lane-inbound": {
       name: 'Bike lane',
       fullName: 'Inbound bike lane',
+      group: 'bike',
       owner: SEGMENT_OWNER_BIKE,
       defaultWidth: 6,
       graphics: {
-        center: { x: 92, y: 0, width: 4, height: 15 },
-        repeat: { x: 90, y: 0, width: 1, height: 15 }
+        center: { x: 92, y: 5, width: 4, height: 15 },
+        repeat: { x: 90, y: 5, width: 1, height: 15 }
       }
     },
     "bike-lane-outbound": {
       name: 'Bike lane',
       fullName: 'Outbound bike lane',
+      group: 'bike',
       owner: SEGMENT_OWNER_BIKE,
       defaultWidth: 6,
       graphics: {
-        center: { x: 97, y: 0, width: 4, height: 15 },
-        repeat: { x: 90, y: 0, width: 1, height: 15 }
+        center: { x: 97, y: 5, width: 4, height: 15 },
+        repeat: { x: 90, y: 5, width: 1, height: 15 }
       }
     },
     "bus-lane-inbound": {
       name: 'Bus lane',
       fullName: 'Inbound bus lane',
+      group: 'public-transit',
       owner: SEGMENT_OWNER_PUBLIC_TRANSIT,
       defaultWidth: 10,
       minWidth: 9,
       maxWidth: 12,
       graphics: {
-        center: { x: 59, y: 0, width: 10, height: 15 },
-        repeat: { x: 26, y: 0, width: 1, height: 15 }
+        center: { x: 59, y: 5, width: 10, height: 15 },
+        repeat: { x: 26, y: 5, width: 1, height: 15 }
       }
     },
     "bus-lane-outbound": {
       name: 'Bus lane',
       fullName: 'Outbound bus lane',
+      group: 'public-transit',
       owner: SEGMENT_OWNER_PUBLIC_TRANSIT,
       defaultWidth: 10,
       minWidth: 9,
       maxWidth: 12,
       graphics: {
-        center: { x: 70, y: 0, width: 10, height: 15 },
-        repeat: { x: 26, y: 0, width: 1, height: 15 }
+        center: { x: 70, y: 5, width: 10, height: 15 },
+        repeat: { x: 26, y: 5, width: 1, height: 15 }
       }
     },
     "drive-lane-inbound": {
       name: 'Drive lane',
       fullName: 'Inbound drive lane',
+      group: 'drive-lane',
       owner: SEGMENT_OWNER_CAR,
       defaultWidth: 10,
       minWidth: 9,
       maxWidth: 12,
       graphics: {
-        center: { x: 28, y: 0, width: 8, height: 15 },
-        repeat: { x: 26, y: 0, width: 1, height: 15 }
+        center: { x: 28, y: 5, width: 8, height: 15 },
+        repeat: { x: 26, y: 5, width: 1, height: 15 }
       }
     },
     "drive-lane-outbound": {
       name: 'Drive lane',
       fullName: 'Outbound drive lane',
+      group: 'drive-lane',
       owner: SEGMENT_OWNER_CAR,
       defaultWidth: 10,
       minWidth: 9,
       maxWidth: 12,
       graphics: {
-        center: { x: 37, y: 0, width: 8, height: 15 },
-        repeat: { x: 26, y: 0, width: 1, height: 15 }
+        center: { x: 37, y: 5, width: 8, height: 15 },
+        repeat: { x: 26, y: 5, width: 1, height: 15 }
       }
     },
     "parking-lane-inbound-left": {
       name: 'Parking lane',
       fullName: 'Inbound parking lane on the left',
+      group: 'parking-lane',
       owner: SEGMENT_OWNER_CAR,
       defaultWidth: 8,
       minWidth: 8,
       maxWidth: 10,
       graphics: {
-        center: { x: 50, y: 0, width: 8, height: 15 },
-        repeat: { x: 26, y: 0, width: 1, height: 15 },
-        right: { x: 112, width: 2, height: 15 }
+        center: { x: 50, y: 5, width: 8, height: 15 },
+        repeat: { x: 26, y: 5, width: 1, height: 15 },
+        right: { x: 112, y: 5, width: 2, height: 15 }
       }
     },
     "parking-lane-inbound-right": {
       name: 'Parking lane',
       fullName: 'Inbound parking lane on the right',
+      group: 'parking-lane',
       owner: SEGMENT_OWNER_CAR,
       defaultWidth: 8,
       minWidth: 8,
       maxWidth: 10,
       graphics: {
-        center: { x: 50, y: 0, width: 8, height: 15 },
-        repeat: { x: 26, y: 0, width: 1, height: 15 },
-        left: { x: 46, width: 2, height: 15 }
+        center: { x: 50, y: 5, width: 8, height: 15 },
+        repeat: { x: 26, y: 5, width: 1, height: 15 },
+        left: { x: 46, y: 5, width: 2, height: 15 }
       }
     },
     "parking-lane-outbound-left": {
       name: 'Parking lane',
       fullName: 'Outbound parking lane on the left',
+      group: 'parking-lane',
       owner: SEGMENT_OWNER_CAR,
       defaultWidth: 8,
       minWidth: 8,
       maxWidth: 10,
       graphics: {
-        center: { x: 115, y: 0, width: 8, height: 15 },
-        repeat: { x: 26, y: 0, width: 1, height: 15 },
-        right: { x: 112, width: 2, height: 15 }
+        center: { x: 115, y: 5, width: 8, height: 15 },
+        repeat: { x: 26, y: 5, width: 1, height: 15 },
+        right: { x: 112, y: 5, width: 2, height: 15 }
       }
     },
     "parking-lane-outbound-right": {
       name: 'Parking lane',
       fullName: 'Outbound parking lane on the right',
+      group: 'parking-lane',
       owner: SEGMENT_OWNER_CAR,
       defaultWidth: 8,
       minWidth: 8,
       maxWidth: 10,
       graphics: {
-        center: { x: 115, y: 0, width: 8, height: 15 },
-        repeat: { x: 26, y: 0, width: 1, height: 15 },
-        left: { x: 46, width: 2, height: 15 }
+        center: { x: 115, y: 5, width: 8, height: 15 },
+        repeat: { x: 26, y: 5, width: 1, height: 15 },
+        left: { x: 46, y: 5, width: 2, height: 15 }
       }
     },
     "turn-lane-inbound-left": {
       name: 'Turn lane',
       fullName: 'Inbound left turn lane',
+      group: 'turn-lane',
       owner: SEGMENT_OWNER_CAR,
       defaultWidth: 10,
       minWidth: 9,
       maxWidth: 12,
       graphics: {
-        center: { x: 123, y: 0, width: 8, height: 15 },
-        repeat: { x: 26, y: 0, width: 1, height: 15 }
+        center: { x: 123, y: 5, width: 8, height: 15 },
+        repeat: { x: 26, y: 5, width: 1, height: 15 }
       }
     },
     "turn-lane-inbound-right": {
       name: 'Turn lane',
       fullName: 'Inbound right turn lane',
+      group: 'turn-lane',
       owner: SEGMENT_OWNER_CAR,
       defaultWidth: 10,
       minWidth: 9,
       maxWidth: 12,
       graphics: {
-        center: { x: 81, y: 0, width: 8, height: 15 },
-        repeat: { x: 26, y: 0, width: 1, height: 15 }
+        center: { x: 81, y: 5, width: 8, height: 15 },
+        repeat: { x: 26, y: 5, width: 1, height: 15 }
       }
     },
     "turn-lane-outbound-left": {
       name: 'Turn lane',
       fullName: 'Outbound left turn lane',
+      group: 'turn-lane',
       owner: SEGMENT_OWNER_CAR,
       defaultWidth: 10,
       minWidth: 9,
       maxWidth: 12,
       graphics: {
-        center: { x: 132, y: 0, width: 8, height: 15 },
-        repeat: { x: 26, y: 0, width: 1, height: 15 }
+        center: { x: 132, y: 5, width: 8, height: 15 },
+        repeat: { x: 26, y: 5, width: 1, height: 15 }
       }
     },
     "turn-lane-outbound-right": {
       name: 'Turn lane',
       fullName: 'Outbound right turn lane',
+      group: 'turn-lane',
       owner: SEGMENT_OWNER_CAR,
       defaultWidth: 10,
       minWidth: 9,
       maxWidth: 12,
       graphics: {
-        center: { x: 141, y: 0, width: 8, height: 15 },
-        repeat: { x: 26, y: 0, width: 1, height: 15 }
+        center: { x: 141, y: 5, width: 8, height: 15 },
+        repeat: { x: 26, y: 5, width: 1, height: 15 }
       }
     },
     "small-median": {
       name: 'Small median',
+      group: 'median',
       owner: SEGMENT_OWNER_CAR,
       defaultWidth: 4,
       graphics: {
-        center: { x: 22, y: 0, width: 3, height: 15 },
-        repeat: { x: 20, y: 0, width: 1, height: 15 }
+        center: { x: 22, y: 5, width: 3, height: 15 },
+        repeat: { x: 20, y: 5, width: 1, height: 15 }
       }
     },
   };
@@ -361,7 +391,7 @@ var main = (function(){
       { type: "bike-lane-inbound", width: 6 },
       { type: "drive-lane-inbound", width: 10 },
       { type: "drive-lane-inbound", width: 10 },
-      { type: "planting-strip", width: 4 },
+      { type: "sidewalk-lamp-both", width: 4 },
       { type: "drive-lane-outbound", width: 10 },
       { type: "drive-lane-outbound", width: 10 },
       { type: "bike-lane-outbound", width: 6 },
@@ -488,12 +518,9 @@ var main = (function(){
     var multiplier = isTool ? (WIDTH_TOOL_MULTIPLIER / TILE_SIZE) : 1;
 
     var bkPositionX = (segmentInfo.graphics.center.x || 0) * TILE_SIZE;
-    var bkPositionY = 
-        CANVAS_BASELINE - (segmentInfo.graphics.center.height || 0) * TILE_SIZE -
-        (segmentInfo.graphics.center.y || 0) * TILE_SIZE;
+    var bkPositionY = (segmentInfo.graphics.center.y || 0) * TILE_SIZE;
 
     var left = 0;
-    var top = 0;
     var width = realWidth * TILE_SIZE;
     var height = CANVAS_BASELINE;
 
@@ -543,10 +570,9 @@ var main = (function(){
 
     var ctx = canvasEl.getContext('2d');
 
-    var realHeight = (segmentInfo.graphics.center.height || 0) * TILE_SIZE;
-
     if (segmentInfo.graphics.repeat) {
       var repeatPositionX = segmentInfo.graphics.repeat.x * TILE_SIZE;
+      var repeatPositionY = (segmentInfo.graphics.repeat.y || 0) * TILE_SIZE;
       var w = segmentInfo.graphics.repeat.width * TILE_SIZE * multiplier;
 
       var count = Math.floor((segmentWidth) / w + 1);
@@ -568,30 +594,34 @@ var main = (function(){
         }
 
         _drawSegmentImage(ctx,
-          repeatPositionX, 0, w, realHeight, 
+          repeatPositionX, repeatPositionY, 
+          w, segmentInfo.graphics.repeat.height * TILE_SIZE, 
           (repeatStartX + (i * segmentInfo.graphics.repeat.width) * TILE_SIZE) * multiplier, 
           // TODO const
-          ((isTool ? 20 : 265) + top), 
+          (isTool ? 20 : 265) + (multiplier * TILE_SIZE * (segmentInfo.graphics.repeat.offsetY || 0)), 
           w, 
-          realHeight * multiplier);
+          segmentInfo.graphics.repeat.height * TILE_SIZE * multiplier);
       }
     }      
 
     if (segmentInfo.graphics.left) {
       var leftPositionX = segmentInfo.graphics.left.x * TILE_SIZE;
+      var leftPositionY = (segmentInfo.graphics.left.y || 0) * TILE_SIZE;
 
       var w = segmentInfo.graphics.left.width * TILE_SIZE;
 
       _drawSegmentImage(ctx,
-          leftPositionX, 0, w, realHeight, 
+          leftPositionX, leftPositionY, 
+          w, segmentInfo.graphics.left.height * TILE_SIZE, 
           0,
           // TODO const
-          ((isTool ? 20 : 265) + top), 
-          w * multiplier, realHeight * multiplier);
+          (isTool ? 20 : 265) + (multiplier * TILE_SIZE * (segmentInfo.graphics.left.offsetY || 0)), 
+          w * multiplier, segmentInfo.graphics.left.height * TILE_SIZE * multiplier);
     }
 
     if (segmentInfo.graphics.right) {
       var rightPositionX = segmentInfo.graphics.right.x * TILE_SIZE;
+      var rightPositionY = (segmentInfo.graphics.right.y || 0) * TILE_SIZE;
 
       var w = segmentInfo.graphics.right.width * TILE_SIZE;
 
@@ -602,19 +632,21 @@ var main = (function(){
       }
 
       _drawSegmentImage(ctx,
-        rightPositionX, 0, w, realHeight,
+        rightPositionX, rightPositionY, 
+        w, segmentInfo.graphics.right.height * TILE_SIZE,
         rightTargetX,
         // TODO const
-        (isTool ? 20 : 265) + top, 
-        w * multiplier, realHeight * multiplier);
+        (isTool ? 20 : 265) + (multiplier * TILE_SIZE * (segmentInfo.graphics.right.offsetY || 0)), 
+        w * multiplier, segmentInfo.graphics.right.height * TILE_SIZE * multiplier);
     }
 
     _drawSegmentImage(ctx,
-      bkPositionX, 0, width, realHeight, 
+      bkPositionX, bkPositionY, 
+      width, segmentInfo.graphics.center.height * TILE_SIZE, 
       left * multiplier, 
       // TODO const
-      (isTool ? 20 : 265) + top, 
-      width * multiplier, realHeight * multiplier);
+      (isTool ? 20 : 265) + (multiplier * TILE_SIZE * (segmentInfo.graphics.center.offsetY || 0)), 
+      width * multiplier, segmentInfo.graphics.center.height * TILE_SIZE * multiplier);
 
     _removeElFromDom(el.querySelector('canvas'));
     el.appendChild(canvasEl);
@@ -1932,6 +1964,8 @@ var main = (function(){
   }
 
   function _createTools() {
+    var lastGroup;
+
     for (var i in SEGMENT_INFO) {
       var segmentInfo = SEGMENT_INFO[i];
 
@@ -1940,11 +1974,10 @@ var main = (function(){
       if (segmentInfo.realWidth > segmentInfo.defaultWidth) {
         width = segmentInfo.realWidth;
       }
-
-      if (segmentInfo.graphics.center && (width < (segmentInfo.graphics.center.width + 1))) {
+      if (segmentInfo.graphics.center && 
+          (width < (segmentInfo.graphics.center.width + 1))) {
         width = segmentInfo.graphics.center.width;
       }
-
       if (segmentInfo.graphics.left && segmentInfo.graphics.left.offsetX) {
         width -= segmentInfo.graphics.left.offsetX;
       }
@@ -1961,6 +1994,17 @@ var main = (function(){
         true);
 
       el.classList.add('tool');
+
+      var deg = (Math.random() * 5) - 2.5;
+
+      el.style.webkitTransform = 'rotateZ(' + deg + 'deg)';
+
+      if (segmentInfo.group != lastGroup) {
+        if (lastGroup) {
+          el.classList.add('new-group');
+        }
+        lastGroup = segmentInfo.group;
+      }
 
       document.querySelector('#tools-inside').appendChild(el);
     }
@@ -2195,9 +2239,6 @@ var main = (function(){
   }
 
   function _addEventListeners() {
-    document.querySelector('#undo').addEventListener('click', _undo);
-    document.querySelector('#redo').addEventListener('click', _redo);
-
     document.querySelector('#street-width-custom').
         addEventListener('change', _onStreetWidthChange);
     document.querySelector('#street-width-no-custom').
@@ -2209,25 +2250,32 @@ var main = (function(){
       window.addEventListener('mousedown', _onBodyMouseDown);
       window.addEventListener('mousemove', _onBodyMouseMove);
       window.addEventListener('mouseup', _onBodyMouseUp); 
+
+      document.querySelector('#tools-scroll-left').
+          addEventListener('click', _onToolsLeftScroll);
+      document.querySelector('#tools-scroll-right').
+          addEventListener('click', _onToolsRightScroll);
+
+      document.querySelector('#undo').addEventListener('click', _undo);
+      document.querySelector('#redo').addEventListener('click', _redo);
     } else {
       window.addEventListener('touchstart', _onBodyMouseDown);
       window.addEventListener('touchmove', _onBodyMouseMove);
       window.addEventListener('touchend', _onBodyMouseUp); 
+
+      document.querySelector('#tools-scroll-left').
+          addEventListener('touchstart', _onToolsLeftScroll);
+      document.querySelector('#tools-scroll-right').
+          addEventListener('touchstart', _onToolsRightScroll);
+
+      document.querySelector('#undo').addEventListener('touchstart', _undo);
+      document.querySelector('#redo').addEventListener('touchstart', _redo);          
     }
     window.addEventListener('keydown', _onBodyKeyDown);       
 
     document.querySelector('#tools-inside').
         addEventListener('scroll', _resizeScrollTools);
 
-    document.querySelector('#tools-scroll-left').
-        addEventListener('click', _onToolsLeftScroll);
-    document.querySelector('#tools-scroll-right').
-        addEventListener('click', _onToolsRightScroll);
-
-    document.querySelector('#tools-scroll-left').
-        addEventListener('touchstart', _onToolsLeftScroll);
-    document.querySelector('#tools-scroll-right').
-        addEventListener('touchstart', _onToolsRightScroll);
   }
 
   function _inspectSystem() {
@@ -2245,31 +2293,6 @@ var main = (function(){
 
     if (system.touch) {
       document.body.classList.add('touch-support');
-    }
-  }
-
-  function _startAnimation() {
-    for (var i in data.segments) {
-      var el = data.segments[i].el.querySelector('canvas');
-
-      el.style.opacity = 0;
-
-      var deg = (parseInt(i) - data.segments.length / 2) * 20;
-
-      el.style.webkitTransform = 'rotateZ(' + deg + 'deg)';
-      el.style.webkitTransformOrigin = '50% 150%';
-
-      el.parentNode.style.webkitPerspectiveOrigin = '50% 50%';
-
-      _createTimeout(function(el) { 
-        el.style.webkitTransition = '-webkit-transform 800ms, opacity 800ms';
-        el.style.opacity = 1;
-        el.style.webkitTransform = 'none';
-      }, el, 300 + Math.random() * 50);
-
-      _createTimeout(function(el) {
-        el.style.webkitTransition = '';
-      }, el, 2000);
     }
   }
 
@@ -2349,7 +2372,6 @@ var main = (function(){
     _onResize();
     _addEventListeners();
     _hideLoadingScreen();
-    _startAnimation();
   }
 
   function _onImageLoaded() {
