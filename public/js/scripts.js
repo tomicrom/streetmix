@@ -12,7 +12,7 @@ var main = (function(){
 "use strict";
   var main = {};
 
-  var TILESET_IMAGE_VERSION = 10;
+  var TILESET_IMAGE_VERSION = 11;
   var TILESET_POINT_PER_PIXEL = 2.0;
   var TILE_SIZE = 12; // pixels
 
@@ -555,6 +555,10 @@ var main = (function(){
       maxWidth += canvasOffsetX;
     }
 
+    var hoverBkEl = document.createElement('div');
+    hoverBkEl.classList.add('hover-bk');
+
+
     var canvasEl = document.createElement('canvas');
     canvasEl.classList.add('image');
     canvasEl.width = maxWidth * system.hiDpi;
@@ -650,6 +654,9 @@ var main = (function(){
 
     _removeElFromDom(el.querySelector('canvas'));
     el.appendChild(canvasEl);
+
+    _removeElFromDom(el.querySelector('.hover-bk'));
+    el.appendChild(hoverBkEl);
   }
 
   function _onWidthEditClick(event) {
@@ -968,6 +975,16 @@ var main = (function(){
     }
   }
 
+/*  function _onSegmentMouseEnter() {
+    //console.log('enter', event.target.className);
+    this.querySelector('canvas').style.background = 'rgba(255, 255, 255, .2)';
+  }
+
+  function _onSegmentMouseLeave() {
+    //console.log('leave', event.relatedTarget.className);
+    this.querySelector('canvas').style.background = '';
+  }*/
+
   // TODO pass segment object instead of bits and pieces
   function _createSegment(type, width, isUnmovable, isTool) {
     var el = document.createElement('div');
@@ -1086,6 +1103,9 @@ var main = (function(){
     } else {
     	el.setAttribute('title', SEGMENT_INFO[type].fullName || SEGMENT_INFO[type].name);
     }
+
+    //$(el).mouseenter(_onSegmentMouseEnter);
+    //$(el).mouseleave(_onSegmentMouseLeave);
 
     if (width) {
       _resizeSegment(el, width, true, isTool, true, true);
@@ -1398,8 +1418,8 @@ var main = (function(){
       _drawLine(ctx, left + data.streetWidth * multiplier, 20, left + data.streetWidth * multiplier, 40);
 
       ctx.save();
-      ctx.strokeStyle = 'red';
-      ctx.fillStyle = 'red';
+      ctx.strokeStyle = 'rgb(220, 20, 30)';
+      ctx.fillStyle = 'rgb(220, 20, 30)';
       _drawArrowLine(ctx, 
         left + data.streetWidth * multiplier, 30, left + maxWidth * multiplier, 30, _prettifyWidth(-data.remainingWidth * TILE_SIZE));
       ctx.restore();

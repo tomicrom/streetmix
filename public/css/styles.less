@@ -11,8 +11,7 @@
 
 @backgroundDirtColour: rgb(200, 195, 190);
 @skyColour: rgb(169, 204, 219);
-@warningColour: rgb(220, 80, 80);
-
+@warningColour: rgb(220, 20, 30);
 
 @undergroundColour: rgb(50, 50, 50);
 
@@ -312,12 +311,14 @@ footer button[disabled] {
 footer h1 {
   position: absolute;
   left: -10px;
+  padding: 0;
+  margin: 0;
   top: -32px;
   display: block;
   width: 360px;
   height: 31px;
-  padding: 0;
-  margin: 0;
+
+  opacity: .75;
 
   pointer-events: none;
 
@@ -384,10 +385,17 @@ body:not(.touch-support) .segment:not(.unmovable):hover .name,
   opacity: 0;
 }
 
-body:not(.touch-support) .segment:not(.unmovable):hover canvas,
-.segment:not(.unmovable).hover canvas {
+body:not(.touch-support) .segment:not(.unmovable):hover .hover-bk,
+.segment:not(.unmovable).hover .hover-bk {
   background: rgba(255, 255, 255, .2);
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: -1;
+  height: @canvasBaseline;
 }
+
 body.segment-resize-dragging .segment:not(.unmovable).hover {
   button.remove,
   button.increment,
@@ -587,7 +595,7 @@ body:not(.touch-support) .segment:hover .name,
 }
 body:not(.touch-support) .segment:hover.warning .name,
 .segment.hover.warning .name {
-  color: lighten(@warningColour, 10%);
+  color: @warningColour;
 }
 
 .segment .commands {
@@ -678,7 +686,7 @@ body:not(.touch-support) .segment:not(.unmovable):hover .increment:hover,
   content: 'i';
 }
 .segment.warning button.info {
-  color: lighten(@warningColour, 10%);  
+  color: @warningColour;
 }
 .segment.warning button.info::after {
   content: '!';
@@ -741,7 +749,7 @@ body:not(.touch-support) .segment:not(.unmovable):hover .width-edit,
 }
 .segment:not(.unmovable).warning .width-edit,
 .segment:not(.unmovable).warning .width-edit-placeholder {
-  color: lighten(@warningColour, 10%) !important;
+  color: @warningColour !important;
 }
 
 .segment .width {
