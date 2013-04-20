@@ -391,11 +391,18 @@ body:not(.touch-support) .segment:not(.unmovable):hover .hover-bk,
   position: absolute;
   left: 0;
   right: 0;
-  top: 10px;
+  top: 0;
   z-index: -1;
   height: @canvasBaseline;
   pointer-events: none;
+
 }
+
+body:not(.touch-support) .segment:not(.tool):not(.unmovable):hover .hover-bk,
+.segment:not(.tool):not(.unmovable).hover .hover-bk {
+  top: 10px;
+}
+
 
 body.segment-resize-dragging .segment:not(.unmovable).hover {
   button.remove,
