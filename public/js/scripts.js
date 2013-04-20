@@ -139,6 +139,16 @@ var main = (function(){
         right: { x: 102, y: 0, offsetX: -2, offsetY: -5, width: 4, height: 20 }
       }
     },
+    "sidewalk-lamp-both": {
+      name: 'Sidewalk w/ a lamp',
+      group: 'sidewalk',
+      owner: SEGMENT_OWNER_PEDESTRIAN,
+      defaultWidth: 6,
+      graphics: {
+        center: { x: 150, y: 0, offsetY: -5, width: 6, height: 20 },
+        repeat: { x: 1, y: 5, width: 1, height: 15 },
+      }
+    },
     "sidewalk-lamp-left": {
       name: 'Sidewalk w/ a lamp',
       group: 'sidewalk',
@@ -148,16 +158,6 @@ var main = (function(){
         center: { width: 0, height: 15 },
         repeat: { x: 1, y: 5, width: 1, height: 15 },
         left: { x: 107, y: 0, offsetX: -2, offsetY: -5, width: 4, height: 20 }
-      }
-    },
-    "sidewalk-lamp-both": {
-      name: 'Sidewalk w/ a lamp',
-      group: 'sidewalk',
-      owner: SEGMENT_OWNER_PEDESTRIAN,
-      defaultWidth: 6,
-      graphics: {
-        center: { x: 150, y: 0, offsetY: -5, width: 6, height: 20 },
-        repeat: { x: 1, y: 5, width: 1, height: 15 },
       }
     },
     "planting-strip": {
