@@ -200,7 +200,7 @@ var whatIsThis = (function(){
     }
     
     infoEl.innerHTML = contentEl.innerHTML;
-    infoEl.innerHTML += '<div class="close"><a onclick="return whatIsThis.hideInfo()" href="#">Close</a></div>';    
+    infoEl.innerHTML += '<div class="close"><a onclick="return whatIsThis.hideInfo()" href="#">Cerrar</a></div>';    
     contentEl.parentNode.removeChild(contentEl);
 
     infoEl.id = 'what-is-this-info';

@@ -142,7 +142,7 @@ var main = (function(){
 
   var SEGMENT_INFO = {
     'sidewalk': {
-      name: 'Sidewalk',
+      name: 'Vereda',
       owner: SEGMENT_OWNER_PEDESTRIAN,
       defaultWidth: 6,
       minWidth: 6,
@@ -152,7 +152,7 @@ var main = (function(){
       }
     },
     "sidewalk-tree": {
-      name: 'Sidewalk w/ a small tree',
+      name: 'Vereda árbol',
       owner: SEGMENT_OWNER_NATURE,
       zIndex: -1,
       defaultWidth: 4,
@@ -162,7 +162,7 @@ var main = (function(){
       }
     },
     "sidewalk-tree-big": {
-      name: 'Sidewalk w/ a big tree',
+      name: 'Vereda gran árbol',
       owner: SEGMENT_OWNER_NATURE,
       defaultWidth: 4,
       zIndex: -1,
@@ -172,7 +172,7 @@ var main = (function(){
       }
     },
     "sidewalk-lamp-right": {
-      name: 'Sidewalk w/ a lamp',
+      name: 'Luminaria derecha',
       group: 'sidewalk',
       owner: SEGMENT_OWNER_PEDESTRIAN,
       defaultWidth: 4,
@@ -183,7 +183,7 @@ var main = (function(){
       }
     },
     "sidewalk-lamp-both": {
-      name: 'Sidewalk w/ a lamp',
+      name: 'Doble luminaria',
       group: 'sidewalk',
       owner: SEGMENT_OWNER_PEDESTRIAN,
       defaultWidth: 6,
@@ -193,7 +193,7 @@ var main = (function(){
       }
     },
     "sidewalk-lamp-left": {
-      name: 'Sidewalk w/ a lamp',
+      name: 'Luminaria izquierda',
       group: 'sidewalk',
       owner: SEGMENT_OWNER_PEDESTRIAN,
       defaultWidth: 4,
@@ -213,7 +213,7 @@ var main = (function(){
       }
     },
     "bike-lane-inbound": {
-      name: 'Bike lane',
+      name: 'Bicisenda',
       subname: 'Inbound',
       owner: SEGMENT_OWNER_BIKE,
       defaultWidth: 6,
@@ -223,7 +223,7 @@ var main = (function(){
       }
     },
     "bike-lane-outbound": {
-      name: 'Bike lane',
+      name: 'Bicisenda',
       subname: 'Outbound',
       owner: SEGMENT_OWNER_BIKE,
       defaultWidth: 6,
@@ -233,7 +233,7 @@ var main = (function(){
       }
     },
     "parking-lane": {
-      name: 'Parking lane',
+      name: 'Carril estacionar',
       owner: SEGMENT_OWNER_CAR,
       defaultWidth: 8,
       minWidth: 8,
@@ -245,7 +245,7 @@ var main = (function(){
       }
     },
     "drive-lane-inbound": {
-      name: 'Drive lane',
+      name: 'Carril autos',
       subname: 'Inbound',
       owner: SEGMENT_OWNER_CAR,
       defaultWidth: 10,
@@ -257,7 +257,7 @@ var main = (function(){
       }
     },
     "drive-lane-outbound": {
-      name: 'Drive lane',
+      name: 'Carril autos',
       subname: 'Outbound',
       owner: SEGMENT_OWNER_CAR,
       defaultWidth: 10,
@@ -280,7 +280,7 @@ var main = (function(){
       }
     },
     "bus-lane-inbound": {
-      name: 'Bus lane',
+      name: 'Carril colectivos',
       subname: 'Inbound',
       owner: SEGMENT_OWNER_PUBLIC_TRANSIT,
       defaultWidth: 10,
@@ -292,7 +292,7 @@ var main = (function(){
       }
     },
     "bus-lane-outbound": {
-      name: 'Bus lane',
+      name: 'Carril colectivos',
       subname: 'Outbound',
       owner: SEGMENT_OWNER_PUBLIC_TRANSIT,
       defaultWidth: 10,
@@ -304,7 +304,7 @@ var main = (function(){
       }
     },
     "small-median": {
-      name: 'Small median',
+      name: 'Boulevard',
       owner: SEGMENT_OWNER_CAR,
       defaultWidth: 4,
       graphics: {
@@ -1107,7 +1107,7 @@ var main = (function(){
       innerEl.innerHTML = '×';
       innerEl.segmentEl = el;
       innerEl.tabIndex = -1;
-      innerEl.setAttribute('title', 'Remove segment');
+      innerEl.setAttribute('title', 'Eliminar segmento');
       if (system.touch) {      
         innerEl.addEventListener('touchstart', _onRemoveButtonClick, false);
       } else {
@@ -2520,7 +2520,7 @@ var main = (function(){
       // TODO validate settings here
     } else {
       data.settings = {};
-      data.settings.units = SETTINGS_UNITS_IMPERIAL;
+      data.settings.units = SETTINGS_UNITS_METRIC;
     }
   }
 
