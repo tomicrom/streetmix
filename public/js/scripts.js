@@ -204,7 +204,7 @@ var main = (function(){
       }
     },
     "planting-strip": {
-      name: 'Planting strip',
+      name: 'Cantero',
       owner: SEGMENT_OWNER_NATURE,
       defaultWidth: 4,
       graphics: {
@@ -269,7 +269,7 @@ var main = (function(){
       }
     },
     "turn-lane": {
-      name: 'Turn lane',
+      name: 'Carril giro',
       owner: SEGMENT_OWNER_CAR,
       defaultWidth: 10,
       minWidth: 9,
