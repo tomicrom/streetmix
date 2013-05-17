@@ -212,21 +212,23 @@ var main = (function(){
         repeat: { x: 8, y: 5, width: 4, height: 15 }
       }
     },
-    "bike-lane-inbound": {
+   
+  /* "bike-lane-inbound": {
       name: 'Ciclovía',
       subname: 'Inbound',
       owner: SEGMENT_OWNER_BIKE,
-      defaultWidth: 6,
+      defaultWidth: 8,
       graphics: {
         center: { x: 92, y: 5, width: 4, height: 15 },
         repeat: { x: 90, y: 5, width: 1, height: 15 }
       }
-    },
+    }, */
+  
     "bike-lane-outbound": {
       name: 'Ciclovía',
       subname: 'Outbound',
       owner: SEGMENT_OWNER_BIKE,
-      defaultWidth: 6,
+      defaultWidth: 8.5,
       graphics: {
         center: { x: 97, y: 5, width: 4, height: 15 },
         repeat: { x: 90, y: 5, width: 1, height: 15 }
@@ -326,11 +328,10 @@ var main = (function(){
     60: [
       { type: "sidewalk", width: 6 },
       { type: "sidewalk-tree", width: 6 },
-      { type: "bike-lane-inbound", width: 6 },
       { type: "drive-lane-inbound", width: 10 },
       { type: "drive-lane-outbound", width: 10 },
       { type: "planting-strip", width: 4 },
-      { type: "bike-lane-outbound", width: 6 },
+      { type: "bike-lane-outbound", width: 8.5 },
       { type: "sidewalk-tree", width: 6 },
       { type: "sidewalk", width: 6 }
     ],
@@ -338,13 +339,13 @@ var main = (function(){
       { type: "sidewalk", width: 6 },
       { type: "sidewalk-tree-big", width: 4 },
       { type: "sidewalk-lamp-right", width: 2 },
-      { type: "bike-lane-inbound", width: 6 },
       { type: "drive-lane-inbound", width: 10 },
       { type: "drive-lane-inbound", width: 10 },
       { type: "sidewalk-lamp-both", width: 4 },
       { type: "drive-lane-outbound", width: 10 },
       { type: "drive-lane-outbound", width: 10 },
-      { type: "bike-lane-outbound", width: 6 },
+      { type: "sidewalk-tree", width: 3.5 },
+      { type: "bike-lane-outbound", width: 8.5 },
       { type: "sidewalk-lamp-left", width: 2 },
       { type: "sidewalk-tree-big", width: 4 },
       { type: "sidewalk", width: 6 }
@@ -2187,7 +2188,7 @@ var main = (function(){
 
     var el = document.createElement('option');
     el.disabled = true;
-    el.innerHTML = 'Building-to-building width:';
+    el.innerHTML = 'Distancia de pared-a-pared:';
     document.querySelector('#street-width').appendChild(el);  
 
     var widths = [];    
