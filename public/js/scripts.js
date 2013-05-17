@@ -152,7 +152,7 @@ var main = (function(){
       }
     },
     "sidewalk-tree": {
-      name: 'Vereda árbol',
+      name: 'Árbol pequeño',
       owner: SEGMENT_OWNER_NATURE,
       zIndex: -1,
       defaultWidth: 4,
@@ -162,7 +162,7 @@ var main = (function(){
       }
     },
     "sidewalk-tree-big": {
-      name: 'Vereda gran árbol',
+      name: 'Árbol',
       owner: SEGMENT_OWNER_NATURE,
       defaultWidth: 4,
       zIndex: -1,
@@ -172,7 +172,7 @@ var main = (function(){
       }
     },
     "sidewalk-lamp-right": {
-      name: 'Luminaria derecha',
+      name: 'Luminaria',
       group: 'sidewalk',
       owner: SEGMENT_OWNER_PEDESTRIAN,
       defaultWidth: 4,
@@ -193,7 +193,7 @@ var main = (function(){
       }
     },
     "sidewalk-lamp-left": {
-      name: 'Luminaria izquierda',
+      name: 'Luminaria',
       group: 'sidewalk',
       owner: SEGMENT_OWNER_PEDESTRIAN,
       defaultWidth: 4,
@@ -213,7 +213,7 @@ var main = (function(){
       }
     },
     "bike-lane-inbound": {
-      name: 'Bicisenda',
+      name: 'Ciclovía',
       subname: 'Inbound',
       owner: SEGMENT_OWNER_BIKE,
       defaultWidth: 6,
@@ -223,7 +223,7 @@ var main = (function(){
       }
     },
     "bike-lane-outbound": {
-      name: 'Bicisenda',
+      name: 'Ciclovía',
       subname: 'Outbound',
       owner: SEGMENT_OWNER_BIKE,
       defaultWidth: 6,
@@ -233,7 +233,7 @@ var main = (function(){
       }
     },
     "parking-lane": {
-      name: 'Carril estacionar',
+      name: 'Estacionados',
       owner: SEGMENT_OWNER_CAR,
       defaultWidth: 8,
       minWidth: 8,
@@ -245,7 +245,7 @@ var main = (function(){
       }
     },
     "drive-lane-inbound": {
-      name: 'Carril autos',
+      name: 'Autos',
       subname: 'Inbound',
       owner: SEGMENT_OWNER_CAR,
       defaultWidth: 10,
@@ -257,7 +257,7 @@ var main = (function(){
       }
     },
     "drive-lane-outbound": {
-      name: 'Carril autos',
+      name: 'Autos',
       subname: 'Outbound',
       owner: SEGMENT_OWNER_CAR,
       defaultWidth: 10,
@@ -269,7 +269,7 @@ var main = (function(){
       }
     },
     "turn-lane": {
-      name: 'Carril giro',
+      name: 'Giro',
       owner: SEGMENT_OWNER_CAR,
       defaultWidth: 10,
       minWidth: 9,
@@ -280,7 +280,7 @@ var main = (function(){
       }
     },
     "bus-lane-inbound": {
-      name: 'Carril colectivos',
+      name: 'Bondi',
       subname: 'Inbound',
       owner: SEGMENT_OWNER_PUBLIC_TRANSIT,
       defaultWidth: 10,
@@ -292,7 +292,7 @@ var main = (function(){
       }
     },
     "bus-lane-outbound": {
-      name: 'Carril colectivos',
+      name: 'Bondi',
       subname: 'Outbound',
       owner: SEGMENT_OWNER_PUBLIC_TRANSIT,
       defaultWidth: 10,
