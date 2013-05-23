@@ -222,7 +222,8 @@ var main = (function(){
         center: { x: 92, y: 5, width: 4, height: 15 },
         repeat: { x: 90, y: 5, width: 1, height: 15 }
       }
-    }, */
+    }, 
+    */
   
     "bike-lane-outbound": {
       name: 'Ciclovía',
@@ -344,7 +345,7 @@ var main = (function(){
       { type: "sidewalk-lamp-both", width: 4 },
       { type: "drive-lane-outbound", width: 10 },
       { type: "drive-lane-outbound", width: 10 },
-      { type: "sidewalk-tree", width: 3.5 },
+      { type: "sidewalk-tree", width: 3.2 },
       { type: "bike-lane-outbound", width: 8.5 },
       { type: "sidewalk-lamp-left", width: 2 },
       { type: "sidewalk-tree-big", width: 4 },
